@@ -26,6 +26,9 @@
     <select id="Annualo" resultType="com.origene.model.dto.Parameters">
         select sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{staDateo} and #{endDateo}
     </select>
+    <select id="">
+      select * from origene_clones_mirror.dbo.orders
+    </select>
 
 
 </mapper>
