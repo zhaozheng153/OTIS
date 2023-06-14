@@ -1,0 +1,24 @@
+server:
+    port: 1001
+spring:
+    application:
+        name: OTIS-First-Module
+    datasource:
+        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+        url: jdbc:sqlserver://10.7.30.66:1433;DatbaseName=origene_clones_mirror
+        username: sa
+        password: origenesql5
+#    thymeleaf:
+#        encoding: utf-8
+#        prefix: classpath:/templates/
+#        suffix: .html
+mybatis-plus:
+    mapper-locations: classpath*:mapper/*.xml
+    # 设置别名包扫描路径，通过该属性可以给包中的类注册别名
+    type-aliases-package: com.origene.model.admin
+    configuration:
+        map-underscore-to-camel-case: false  #是否关闭驼峰到下划线的映射
+        cache-enabled: false  #是否开启二级缓存
+        log-impl: org.apache.ibatis.logging.stdout.StdOutImpl  #打印sql语句
+
+

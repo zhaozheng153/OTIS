@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="staticss/elementui/index.css">
+    <link rel="stylesheet" href="staticss/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="staticss/style.css">
+    <link rel="stylesheet" href="staticss/bootstrap.css">
+    <!--<script src="https://fastly.jsdelivr.net/npm/echarts@5.4.2/dist/echarts.min.js"></script>-->
+    <script src="staticss/echarts.min.js"></script>
+
+    <script src="staticss/vue.js"></script>
+    <script src="staticss/elementui/index.js"></script>
+    <script src="staticss/jquery.min.js"></script>
+    <script src="staticss/axios-0.18.0.js"></script>
+    <script src="staticss/bootstrap.min.js"></script>
+</head>
+<body>
+
+    <div id="app">
+
+
+
+        <template>
+
+            <el-tabs type="border-card">
+                <el-tab-pane label="销售管理">
+
+                    <el-form ref="form" :model="sizeForm" label-width="80px" size="mini">
+
+                        <el-form-item label="销售员">
+                            <el-select v-model="sizeForm.region" placeholder="请选择销售员">
+                                <el-option label="大鹏" value="大鹏"></el-option>
+                                <el-option label="陶明" value="陶明"></el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item label="销售区域">
+                            <el-select v-model="sizeForm.region" placeholder="请选择销售区域">
+                                <el-option label="北京" value="北京"></el-option>
+                                <el-option label="天津" value="天津"></el-option>
+                            </el-select>
+                        </el-form-item>
+                        <el-form-item label="查看年份">
+                            <el-col :span="11">
+                                <el-date-picker type="date" placeholder="选择日期" v-model="sizeForm.date1" style="width: 100%;"></el-date-picker>
+                            </el-col>
+                            <el-col class="line" :span="2">-</el-col>
+                            <el-col :span="11">
+                                <el-time-picker placeholder="选择时间" v-model="sizeForm.date2" style="width: 100%;"></el-time-picker>
+                            </el-col>
+                        </el-form-item>
+                        <el-button type="primary" @click="onSubmit">查询</el-button>
+                    </el-form>
+
+
+                    <el-tabs tab-position="tabPosition" style="height: 600px;"  @tab-click="WeeklySales">
+
+                        <el-tab-pane label="周销售" name="container">
+
+                            <div id="container" style="width: 600px;height: 500px"></div>
+
+                        </el-tab-pane>
+                        <el-tab-pane label="月销售" name="container1">
+
+                            <div id="container1" style="width: 600px;height: 500px"></div>
+
+                        </el-tab-pane>
+                        <el-tab-pane label="季度销售" name="container2">
+
+                            <div id="container2" style="width: 600px;height: 500px"></div>
+
+                        </el-tab-pane>
+                        <el-tab-pane label="年销售" name="container3">
+
+                            <div id="container3" style="width: 600px;height: 500px"></div>
+
+                        </el-tab-pane>
+                    </el-tabs>
+
+                </el-tab-pane>
+                <el-tab-pane label="产品销售">
+
+                    <el-tabs tab-position="tabPosition" style="height: 200px;">
+                        <el-tab-pane label="周产品销售">
+
+                        </el-tab-pane>
+                        <el-tab-pane label="月产品销售">月销售</el-tab-pane>
+                        <el-tab-pane label="季度产品销售">季度销售</el-tab-pane>
+                        <el-tab-pane label="年产品销售">年销售</el-tab-pane>
+                    </el-tabs>
+
+                </el-tab-pane>
+                <el-tab-pane label="客户回购">
+
+                    <el-tabs tab-position="tabPosition" style="height: 200px;">
+                        <el-tab-pane label="周客户回购">
+
+                        </el-tab-pane>
+                        <el-tab-pane label="月客户回购">月销售</el-tab-pane>
+                        <el-tab-pane label="季度客户回购">季度销售</el-tab-pane>
+                        <el-tab-pane label="年客户回购">年销售</el-tab-pane>
+                    </el-tabs>
+
+                </el-tab-pane>
+                <a href="index2.html">查看详情</a>
+            </el-tabs>
+
+        </template>
+
+
+        <table>
+            <tr>
+                <td>姓名</td>
+                <td>年度目标</td>
+                <td>销售额</td>
+            </tr>
+        </table>
+
+
+
+
+    </div>
+
+
+</body>
+<script type="text/javascript">
+
+
+
+    new Vue({
+        el:'#app',
+        data:{
+            tabPosition: 'top',
+            x:[],
+            y:[],
+            sizeForm:{}
+        },
+        created(){
+
+        },
+        methods:{
+            onSubmit(){
+
+            },
+            WeeklySales(tab){
+
+                tab.label;
+                tab.name;
+                if (tab.label=='周销售'){
+                    this.x = ['第一周','第二周','第三周','第四周','第五周'
+                        ,'第六周','第七周','第八周','第九周','第十周'];
+                    this.y = [180,190,150,145,168,188,178,193,195,198];
+                }
+                if (tab.label=='月销售'){
+                    this.x = ['第一月','第二月','第三月','第四月','第五月'
+                        ,'第六月','第七月','第八月','第九月','第十月'];
+                    this.y = [180,190,150,145,168,188,178,193,195,198];
+                }
+                if (tab.label=='季度销售'){
+                    this.x = ['第一季度','第二季度','第三季度','第四季度'];
+                    this.y = [1800,1900,1850,2000];
+                }
+                if (tab.label=='年销售'){
+                    this.x = ['2019年','2020年','2021年','2022年','2023年'];
+                    this.y = [8000,8500,9550,12000,];
+                }
+
+                this.Statistical(tab.name);
+            },
+            Statistical(name){
+                // var dom = document.getElementById(name);
+                var myChart = echarts.init(document.getElementById(name));
+
+                debugger
+                var option = {
+                    title: {
+                        text: '折线图',
+                        subtext: '真实有效',
+                        left: 'center'
+                    },
+                    tooltip: {
+                        trigger: 'axis'
+                    },
+                    xAxis: {
+                        type: 'category',
+                        data: this.x
+                    },
+                    yAxis: {
+                        type: 'value'
+                    },
+                    series: [
+                        {
+                            name: 'Union Ads',
+                            stack: 'Total',
+                            type: 'line',
+                            data: this.y
+                        }
+                    ]
+                };
+                myChart.setOption(option);
+                window.addEventListener('resize', myChart.resize);
+            }
+
+        }
+
+
+    })
+
+
+
+
+
+</script>
+
+
+</html>

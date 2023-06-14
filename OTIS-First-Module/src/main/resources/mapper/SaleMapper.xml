@@ -1,0 +1,31 @@
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.origene.first.mapper.SaleMapper">
+
+
+    <select id="SellOut" resultType="com.origene.model.dto.Statistics" >
+      select top 15 Company name,sum(totalprice) sum,count(*) numone from (select row_number() over(order by orderId asc) as rownumber ,* from origene_clones_mirror.dbo.orders) temp_row
+      where rownumber > 0 and OrderDate between #{strtime} and #{outtime} group by Company order by sum desc
+    </select>
+
+    <select id="RegionalSales" resultType="com.origene.model.dto.Statistics">
+        select top 15 n.ShipCity name,n.sum sum,f.sum summ from (select ShipCity,sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{time} and #{date} group by ShipCity )
+         as n left join(select ShipCity,sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{time1} and #{time} group by ShipCity ) as f
+         on n.ShipCity = f.ShipCity order by n.sum desc
+    </select>
+
+    <select id="PaymentInReturn" resultType="com.origene.model.dto.Statistics">
+        select receiveDate name,sum(revenue) sum from origene_clones_mirror.dbo.OrderSaleIncome
+        where receiveDate between #{str} and #{end} group by receiveDate
+    </select>
+
+    <select id="Annual" resultType="com.origene.model.dto.Parameters">
+        select sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{staDate} and #{endDate}
+    </select>
+    <select id="Annualo" resultType="com.origene.model.dto.Parameters">
+        select sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{staDateo} and #{endDateo}
+    </select>
+
+
+</mapper>
