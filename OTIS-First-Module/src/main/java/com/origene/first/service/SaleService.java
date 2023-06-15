@@ -13,5 +13,5 @@ public interface SaleService {
 
     List<Statistics> PaymentInReturn();
 
-    List<Statistics> Annual(Parameters parameters);
+    Statistics Annual(Parameters parameters);
 }

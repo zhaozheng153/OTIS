@@ -14,7 +14,7 @@ public interface SaleMapper {
 
     List<Statistics> PaymentInReturn(@Param("str") Date str,@Param("end") Date end);
 
-    Integer Annual(Parameters param);
-    Integer Annualo(Parameters param);
+    Double Annual(Parameters param);
+    Double Annualo(Parameters param);
 
 }

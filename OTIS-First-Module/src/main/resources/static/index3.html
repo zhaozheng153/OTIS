@@ -424,7 +424,7 @@
                                 <div class="progress progress-sm">
                                     <!--############## role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" aria-label="75% Complete"-->
                                     <!--<span class="visually-hidden">75% Complete</span>-->
-                                    <div class="progress-bar bg-primary" style="width: 85%"></div>
+                                    <div class="progress-bar bg-primary" style="width: 89%"></div>
 
                                 </div>
 
@@ -1739,9 +1739,12 @@
 
 
                 axios.post("/Sales/Annual",this.parama).then(res=>{
-                    var stat = res.data;
-                    this.prop = (stat.num / stat.numm - 1)*100;
-                    console.log(this.prop);
+                    var stat = res.data
+
+                    this.prop = ((res.data.sum / res.data.summ - 1)*100).toFixed(2)
+
+                    console.log(((res.data.sum / res.data.summ )*100).toFixed(4))
+
                 })
 
 
@@ -1821,7 +1824,6 @@
                         const option1 = myChart1.getOption()
                         const yAxis = option1.yAxis
                         const name = yAxis[0].data[yIndex]
-                        console.log(name)
                         // console.log('--------打印index和公司名称-----------------')
                         window.location.href = "#"
                     }
@@ -1847,7 +1849,6 @@
                         y.push(t.numone)
 
                     }
-                    console.log(x,y)
 
 
 

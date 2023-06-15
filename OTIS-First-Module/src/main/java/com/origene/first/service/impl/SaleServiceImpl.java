@@ -76,7 +76,7 @@ public class SaleServiceImpl implements SaleService {
     }
 
     @Override
-    public List<Statistics> Annual(Parameters parameters) {
+    public Statistics Annual(Parameters parameters) {
 
         String sta = parameters.getYeara()+"-01-01";
         String sta1 = parameters.getYeara()-1+"-01-01";
@@ -103,13 +103,13 @@ public class SaleServiceImpl implements SaleService {
 
 
 
-        System.out.println(param.getStaDate()+"\n"+param.getEndDate()+"\n"+param.getStaDateo()+"\n"+param.getEndDateo());
-        Integer annual = saleMapper.Annual(param);
-        Integer annualo = saleMapper.Annualo(param);
-        List<Statistics> stat = new ArrayList<Statistics>();
+//        System.out.println(param.getStaDate()+"\n"+param.getEndDate()+"\n"+param.getStaDateo()+"\n"+param.getEndDateo());
+        Double annual = saleMapper.Annual(param);
+        Double annualo = saleMapper.Annualo(param);
+        System.out.println(annual+"--"+annualo);
         Statistics statistics = new Statistics();
-        statistics.setSum((double)annual);
-        statistics.setSum((double)annualo);
-        return stat;
+        statistics.setSum(annual);
+        statistics.setSumm(annualo);
+        return statistics;
     }
 }

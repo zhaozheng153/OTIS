@@ -20,10 +20,10 @@
         where receiveDate between #{str} and #{end} group by receiveDate
     </select>
 
-    <select id="Annual" resultType="com.origene.model.dto.Parameters">
+    <select id="Annual" resultType="java.lang.Double">
         select sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{staDate} and #{endDate}
     </select>
-    <select id="Annualo" resultType="com.origene.model.dto.Parameters">
+    <select id="Annualo" resultType="java.lang.Double">
         select sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{staDateo} and #{endDateo}
     </select>
     <select id="">

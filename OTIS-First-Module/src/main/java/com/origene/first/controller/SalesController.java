@@ -41,7 +41,7 @@ public class SalesController {
     }
 
     @RequestMapping("Annual")
-    public List<Statistics> Annual(@RequestBody Parameters parameters){
+    public Statistics Annual(@RequestBody Parameters parameters){
         return saleService.Annual(parameters);
     }
 
