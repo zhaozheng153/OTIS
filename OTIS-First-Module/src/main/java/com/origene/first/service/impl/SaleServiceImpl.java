@@ -106,10 +106,25 @@ public class SaleServiceImpl implements SaleService {
 //        System.out.println(param.getStaDate()+"\n"+param.getEndDate()+"\n"+param.getStaDateo()+"\n"+param.getEndDateo());
         Double annual = saleMapper.Annual(param);
         Double annualo = saleMapper.Annualo(param);
-        System.out.println(annual+"--"+annualo);
         Statistics statistics = new Statistics();
         statistics.setSum(annual);
         statistics.setSumm(annualo);
         return statistics;
+    }
+
+    @Override
+    public Statistics on_sale_today() {
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String format1 = format.format(date);
+        Date parse = null;
+        try{
+            parse = format.parse(format1);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        List<Statistics> statisticsList =  saleMapper.on_sale_today(date,parse);
+        return null;
     }
 }

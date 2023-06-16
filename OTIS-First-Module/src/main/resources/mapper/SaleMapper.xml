@@ -26,8 +26,8 @@
     <select id="Annualo" resultType="java.lang.Double">
         select sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{staDateo} and #{endDateo}
     </select>
-    <select id="">
-      select * from origene_clones_mirror.dbo.orders
+    <select id="on_sale_today">
+
     </select>
 
 

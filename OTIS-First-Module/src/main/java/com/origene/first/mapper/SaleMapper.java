@@ -17,4 +17,5 @@ public interface SaleMapper {
     Double Annual(Parameters param);
     Double Annualo(Parameters param);
 
+    List<Statistics> on_sale_today(@Param("date")Date date,@Param("parse") Date parse);
 }

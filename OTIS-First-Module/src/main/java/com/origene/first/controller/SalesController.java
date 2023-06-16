@@ -45,5 +45,12 @@ public class SalesController {
         return saleService.Annual(parameters);
     }
 
+    @RequestMapping("On_sale_today")
+    public Statistics On_sale_today(){
+
+        return saleService.on_sale_today();
+
+    }
+
 
 }

@@ -14,4 +14,8 @@ public interface SaleService {
     List<Statistics> PaymentInReturn();
 
     Statistics Annual(Parameters parameters);
+
+    Statistics on_sale_today();
+
+
 }
