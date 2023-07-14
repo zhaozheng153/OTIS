@@ -13,9 +13,14 @@ public class Statistics implements Serializable {
     private Integer retsum;
     private Integer compsum;
     private Integer retgsum;
+    private String message;
     private HashMap<String,Object> maps;
 
     public Statistics() {
+    }
+
+    public Statistics(String message) {
+        this.message = message;
     }
 
     public Statistics(String name, Integer numone, Double sum, Double summ, Integer salesum, Integer retsum, Integer compsum, Integer retgsum, HashMap<String, Object> maps) {
@@ -28,6 +33,14 @@ public class Statistics implements Serializable {
         this.compsum = compsum;
         this.retgsum = retgsum;
         this.maps = maps;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public Integer getSalesum() {

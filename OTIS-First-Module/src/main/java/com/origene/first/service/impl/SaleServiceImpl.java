@@ -124,6 +124,11 @@ public class SaleServiceImpl implements SaleService {
         }catch (Exception e){
             e.printStackTrace();
         }
+
+        if (parse == null ){
+            return new Statistics("系统时间为错误的，请调整时间");
+        }
+
         List<Statistics> statisticsList =  saleMapper.on_sale_today(date,parse);
         return null;
     }

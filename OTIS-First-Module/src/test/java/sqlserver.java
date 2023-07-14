@@ -29,6 +29,24 @@ import java.util.Date;
 public class sqlserver {
 
     public static void main(String[] args) {
+        Date date = new Date();
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+        String format1 = format.format(date);
+        Date parse = null;
+        try{
+            parse = format.parse(format1);
+
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+
+        System.out.println(date+"----"+parse);
+    }
+
+}
+
+
+/*    public static void main(String[] args) {
 //        String url = "jdbc:mysql://localhost:3306/leadnews_admin";
         String url = "jdbc:sqlserver://10.7.30.66:1433;DatabaseName=origene_clones_mirror";
         Connection conn;
@@ -68,7 +86,7 @@ public class sqlserver {
 
 
 
-}
+}*/
 
 
 /*
@@ -78,7 +96,8 @@ public class sqlserver {
      * 创建PDF文件
      * @param htmlStr
      * @throws Exception
-     *//*
+     */
+/*
 
     private static void writeToOutputStreamAsPDF(String htmlStr) throws Exception {
         String targetFile = "pdfDemo.pdf";
@@ -160,8 +179,8 @@ public class sqlserver {
 /**
      * 读取 HTML 文件
      * @return
-     *//*
-
+     */
+/*
     private static String readHtmlFile() {
         StringBuffer textHtml = new StringBuffer();
         try {
@@ -229,5 +248,5 @@ public class sqlserver {
         toPdf(htmlStr);
     }
 
-}
-*/
+}*/
+

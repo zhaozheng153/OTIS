@@ -27,7 +27,7 @@
         select sum(totalprice) sum from origene_clones_mirror.dbo.orders where OrderDate between #{staDateo} and #{endDateo}
     </select>
     <select id="on_sale_today">
-
+        select count(*) from origene_clones_mirror.dbo.orders
     </select>
 
 
